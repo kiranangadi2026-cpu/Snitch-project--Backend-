@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const useSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     email:{
         type:String,
         requried:true,
@@ -9,6 +9,11 @@ const useSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true
+    },
+    passwordHash:{
+        type:String,
+        required:true,
+        minLength:6
     },
     role:{
         //user or seller
