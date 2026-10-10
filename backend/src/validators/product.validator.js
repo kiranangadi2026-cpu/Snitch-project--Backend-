@@ -9,7 +9,7 @@ export const createProductValidator = [
         .isAlpha("en-US", {ignore: " -"}).withMessage("Title can only have english small case and chapital case"),
     body("description")
         .exists().withMessage("Description is requierd").bail()
-        .isSting().withMessage("Description must be string")
+        .isString().withMessage("Description must be string")
         .trim()
         .isLength({min:20, max:500}).withMessage("Min 20 and max 500 letters"),
     body("price.amount")
@@ -17,7 +17,7 @@ export const createProductValidator = [
         .isFloat({min:0}).withMessage("price must be a float and greater that 0"),
     body("price.currency")
         .exists().withMessage("Currency is requreid")
-        .isSting().withMessage("it must be in string format")
+        .isString().withMessage("it must be in string format")
         .isIn(["INR, USD"]).withMessage("Currency either be INR or USD"),
     body("sizes")
         .exists().withMessage("Size is required")
@@ -38,9 +38,7 @@ export const createProductValidator = [
                 message:"Invalid request",
                 errors:errors.array()
             })
-        }
-
+        }       
         next()
-    }
-   
+    }  
 ]

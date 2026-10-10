@@ -1,5 +1,8 @@
 import app from "./app/app.js";
+import connectDB from "./config/db.js";
 
-app.listen(300, ()=>{
+await connectDB()
+
+app.listen(3000, ()=>{
     console.log("The port 3000");
 })
