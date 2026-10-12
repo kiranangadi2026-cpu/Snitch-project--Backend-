@@ -42,3 +42,45 @@ export const createProductValidator = [
         next()
     }  
 ]
+
+export const unlistProductValidator = [
+    param("id")
+        .exists().withMessage("Product id is required").bail()
+        .isMongoId().withMessage("product id must be valid"),
+
+    (req, res, next)=>{
+
+        const errors = validationResult(req)
+
+        if(!errors.isEmpty()){
+            return res.status(400).json({
+                message:"Invalid data",
+                errors:errors.array()
+            })
+        }
+        
+        next() 
+    }
+
+]
+
+export const listProductValidator = [
+    param("id")
+        .exists().withMessage("Product id is required").bail()
+        .isMongoId().withMessage("product id must be valid"),
+
+    (req, res, next)=>{
+
+        const errors = validationResult(req)
+
+        if(!errors.isEmpty()){
+            return res.status(400).json({
+                message:"Invalid data",
+                errors:errors.array()
+            })
+        }
+        
+        next() 
+    }
+
+]
